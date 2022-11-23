@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.PeerToPeer;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,8 @@ namespace Core.DataAccess.Entitiy_Freamwork
                     : context.Set<TEntity>().Where(filter).ToList();
             }
         }
+        //FileNotFoundException: Could not load file or assembly 'System.Diagnostics.PerformanceCounter,
+        //Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'. Sistem belirtilen dosyayı bulamıyor.
 
 
         public void Update(TEntity entity)

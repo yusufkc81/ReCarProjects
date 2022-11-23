@@ -1,24 +1,30 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
+using Core.Utilities;
+using Core.Utilities.Helpers.FileHelper;
+using DataAccess.Abstract;
 using DataAccess.Concrete.Entity_Freamwork;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ConsolUI
 {
     public class Program
     {
-        static void Main(string[] args)
+
+        public static void Main()
         {
             //------------------------------------Araç Ekleme---------------------------
 
 
 
-           // CarManager carManager = new CarManager(new EfCarDal());
+            //CarManager carManager = new CarManager(new EfCarDal());
             //Cars cars = new Cars();
             //{
-            //    Id=2,BrandId=3,ColorId=1,DailyPrice=250,Description="Dünyada Bir Numara",ModelYear="2020"
+            //    Id = 2,BrandId = 3,ColorId = 1,DailyPrice = 250,Description = "Dünyada Bir Numara",ModelYear = "2020";
             //};
             //carManager.Add(cars);
             //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +35,7 @@ namespace ConsolUI
             //------------Araç Renk Ekleme-----------------------------------
 
 
-           // ColorManager colorManager = new ColorManager(new EfColorDal());
+            // ColorManager colorManager = new ColorManager(new EfColorDal());
             //Color color = new Color
             //{
             //    ColorId = 6,
@@ -117,6 +123,9 @@ namespace ConsolUI
             //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             ////--------------Araç Listele--------------
+            //CarManager carManager = new CarManager(new EfCarDal());
+
+
 
             //foreach (var car in carManager.GetAll())
             //{
@@ -150,12 +159,24 @@ namespace ConsolUI
 
             //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //Rental rental = new Rental() { CarId = 1, CustomerId = 1, Kiralandi = false, RenTime = DateTime.Now, ReturnTime = DateTime.Now.AddDays(2),RentalId=5 };
+            //rentalManager.Add(rental);
+
 
 
             //yukardaki managerları kullandım tekrar newlemedim
             //Carmanager.getall string tipi sorunu var 
-        }
 
+            var c = new CarManager(new EfCarDal()).GetAll();
+            foreach (Cars item in c.Data)
+            {
+                Console.WriteLine(item.BrandId);
+            }
+        }
     }
 
 }
+
+
+

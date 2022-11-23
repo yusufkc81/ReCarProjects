@@ -18,6 +18,7 @@ namespace Business.Concrete
     {
         IRentalDal _rentalDal;
         public RentalManager(IRentalDal rentalDal)
+        
         {
 
             _rentalDal = rentalDal;
@@ -26,25 +27,21 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {
             var result = _rentalDal.GetAll(c => c.Kiralandi == true);
-            var bak = 0;
             foreach (var item in result)
             
             {
                 if (item.CarId==rental.CarId)
                 {
-                    bak++;
+                    return new ErrorResult(Messages.ErorrAddedRental);              
+               
                 }
+
             }
-            if (bak==result.Count)
-            {
-                
-                return new ErrorResult(Messages.ErorrAddedRental);
-            }
-            else
-            {
-                _rentalDal.Add(rental);
-                return new SuccessResult(Messages.AddedRental);
-            }
+
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.AddedRental);
+
+
 
 
 
@@ -103,5 +100,31 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.UpdateRental);
         }
+
+        public IResult GetCheckAddedRental(Rental rental)
+        {
+
+            var result = _rentalDal.GetAll(c => c.Kiralandi == true);
+            var bak = 0;
+            foreach (var item in result)
+
+            {
+                if (item.CarId == rental.CarId)
+                {
+                    bak++;
+                }
+            }
+            if (bak == result.Count)
+            {
+
+                return new ErrorResult(Messages.ErorrAddedRental);
+
+            }
+            throw new NotImplementedException();
+
+        }
+
+
     }
+
 }
