@@ -14,6 +14,5 @@ namespace Entities.Concrete
         public int CustomerId { get; set; }
         public DateTime RenTime { get; set; }
         public DateTime ReturnTime { get; set; }
-        public Boolean Kiralandi { get; set; }
     }
 }

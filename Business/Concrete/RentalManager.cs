@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Core.Utilities;
+using Core.Utilities.Business;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Entity_Freamwork;
 using Entities.Concrete;
@@ -26,22 +27,16 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            var result = _rentalDal.GetAll(c => c.Kiralandi == true);
-            foreach (var item in result)
-            
+            IResult result = BusinessRules.Run(GetCheckAddedRental(rental.CarId));
+            if (result !=null)
             {
-                if (item.CarId==rental.CarId)
-                {
-                    return new ErrorResult(Messages.ErorrAddedRental);              
-               
-                }
-
+                return result;
             }
 
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.AddedRental);
 
-
+          
 
 
 
@@ -101,27 +96,18 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UpdateRental);
         }
 
-        public IResult GetCheckAddedRental(Rental rental)
+        public IResult GetCheckAddedRental(int CarId)
         {
 
-            var result = _rentalDal.GetAll(c => c.Kiralandi == true);
-            var bak = 0;
-            foreach (var item in result)
-
+            var x = _rentalDal.GetAll(c => c.ReturnTime > DateTime.Now);
+            foreach (var item in x)
             {
-                if (item.CarId == rental.CarId)
+                if (item.CarId == CarId)
                 {
-                    bak++;
+                    return new ErrorResult(Messages.ErorrAddedRental);
                 }
             }
-            if (bak == result.Count)
-            {
-
-                return new ErrorResult(Messages.ErorrAddedRental);
-
-            }
-            throw new NotImplementedException();
-
+            return new SuccessResult(Messages.AddedRental);
         }
 
 

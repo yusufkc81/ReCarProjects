@@ -39,7 +39,7 @@ namespace Business.Constants
         public static string DeletedRental = "Kiralama Silindi";
         public static string UpdateRental = "Kiralama Güncellendi";
         public static string RentalListed = "Kiralamalar Listelendi";
-        public static string ErorrAddedRental = "Boş değer Bırakmayanız.";
+        public static string ErorrAddedRental = "Araç Kira Durumundadır.";
         public static string ErrorReturnAddedRental = "Araç Kiralanmış durumdadır.";
 
         //CarImageManager
@@ -47,6 +47,7 @@ namespace Business.Constants
         public static string DeletedCarImage ="Resim Silindi";
         public static string CarImagesListed = "Resimler listelendi";
         public static string UpdatedCarImage = "Resimler Güncellendi";
+        public static string ErrorCarImage="5 Resimden fazla yükleyemezsssssiniz";
 
         //Carmanager
         public static string AddedCarMessage = "Araç Eklendi";
@@ -54,7 +55,6 @@ namespace Business.Constants
         public static string DeletedCar = "Araç Silindi";
         public static string CarListed = "Araçlar Listelendi";
         public static string ErorrAddedCar = "Araba ekeleyemezzsiniz";
-
-
+       
     }
 }
