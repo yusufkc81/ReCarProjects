@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BussinesAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -22,7 +23,18 @@ namespace Business.Concrete
         {
             _CarDal = carDal;
         }
+        //----------------------------------------------//
 
+
+
+
+        //login işlemleri car.add ekleme claim yani yetkisi olan bir kullanıcı giriş yaptıgında araba ekle metodunu kullanabilecek
+
+
+        //doğrulama günlük fiyat boş bırakılmaz ve açıklama en az iki harfden büyük olmalalı doğrulaması
+
+        //iş kurallarını rental managerda bulabilirsin tekrarını ordan bak 
+       // [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Cars car)
         {

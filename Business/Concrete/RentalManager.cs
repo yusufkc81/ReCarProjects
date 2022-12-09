@@ -27,6 +27,8 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
+            //iş kuralı tek tek hereyere yazmak yerine metot şeklinde çağırıyoruzki tekrar tekrar yazmaylalım
+            //burda iş kuralı metodu bu classın 181 inci satırında bulunmakta iş kuralı araba kiralama günü bitmemeişse kiralanamazdır
             IResult result = BusinessRules.Run(GetCheckAddedRental(rental.CarId));
             if (result !=null)
             {

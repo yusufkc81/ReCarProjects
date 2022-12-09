@@ -25,6 +25,9 @@ namespace Business.Concrete
             _fileHelper = fileHelper;
         }
 
+
+        //--------------------------------------------------------------------------------------------//
+
         public IResult Add(IFormFile file, CarImages carImages)
         {
             //kurallar
@@ -71,6 +74,20 @@ namespace Business.Concrete
             }
             return new SuccessResult(Messages.AddedCarImage);
 
+
+        }
+
+        public IDataResult<List<CarImages>> GetCarImages(int id)
+        {
+
+            var y = _carImageDal.GetAll(x => x.CarId == id);
+            if (y == null)
+            {
+
+                return new SuccessDataResult<List<CarImages>>(Messages.yazmaadım);
+
+            }
+            return new SuccessDataResult<List<CarImages>>(Messages.ListedCarImage);
 
         }
     }

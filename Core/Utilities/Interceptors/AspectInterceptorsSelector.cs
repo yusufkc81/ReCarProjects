@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Interceptors
 {
-    internal class AspectInterceptorsSelector : IInterceptorSelector
+    public class AspectInterceptorsSelector : IInterceptorSelector
     {
         public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
         {

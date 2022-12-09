@@ -48,6 +48,8 @@ namespace Business.Constants
         public static string CarImagesListed = "Resimler listelendi";
         public static string UpdatedCarImage = "Resimler Güncellendi";
         public static string ErrorCarImage="5 Resimden fazla yükleyemezsssssiniz";
+        public static string ListedCarImage = "Arabanın resimleri listelendi";
+        public static string yazmaadım = "yazılacak defatul resim için";
 
         //Carmanager
         public static string AddedCarMessage = "Araç Eklendi";
@@ -55,6 +57,7 @@ namespace Business.Constants
         public static string DeletedCar = "Araç Silindi";
         public static string CarListed = "Araçlar Listelendi";
         public static string ErorrAddedCar = "Araba ekeleyemezzsiniz";
-       
+
+        public static string AuthorizationDenied = "Yetkiniz Yok";
     }
 }

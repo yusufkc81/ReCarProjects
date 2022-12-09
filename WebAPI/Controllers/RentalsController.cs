@@ -16,6 +16,20 @@ namespace WebAPI.Controllers
         {
             _rentalService = rentalService;
         }
+        [HttpPost("getcustomer")]
+        public IActionResult GetCustomer(Rental rental)
+        {
+            var result = _rentalService.GetCustomerId(rental.CustomerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+        //-----------------------------------------------------------------------------------------------
         [HttpGet("getall")]
         public ActionResult GetAll()
         {
