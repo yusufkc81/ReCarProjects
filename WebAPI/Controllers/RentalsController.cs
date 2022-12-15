@@ -16,10 +16,10 @@ namespace WebAPI.Controllers
         {
             _rentalService = rentalService;
         }
-        [HttpPost("getcustomer")]
+        [HttpGet("getcustomer")]
         public IActionResult GetCustomer(Rental rental)
         {
-            var result = _rentalService.GetCustomerId(rental.CustomerId);
+            var result = _rentalService.GetUserId(rental.UserId);
             if (result.Success)
             {
                 return Ok(result);
@@ -76,6 +76,20 @@ namespace WebAPI.Controllers
         public ActionResult Update(Rental rental)
         {
             var result = _rentalService.Update(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+        //--------------------------------------------------------------------------
+        [HttpGet("getrentaldto")]
+        public ActionResult GetRentalDto()
+        {
+            var result = _rentalService.GetDtos();
             if (result.Success)
             {
                 return Ok(result);

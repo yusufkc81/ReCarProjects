@@ -1,9 +1,6 @@
 ﻿using Business.Abstract;
-using Core.Utilities;
 using Entities.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -31,6 +28,7 @@ namespace WebAPI.Controllers
         //----------------------------------------------------------------
 
         [HttpPost("add")]
+
         public ActionResult Add(Cars cars)
         {
             var result = _carService.Add(cars);
@@ -75,7 +73,19 @@ namespace WebAPI.Controllers
 
         }
         //----------------------------------------------------------------------------------------
+        [HttpGet("getCarDto")]
+        public IActionResult GetCarDtos()
+        {
+            var result = _carService.GetCarDtos();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        //----------------------------------------------------------------
 
+       
 
 
 

@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj" />
-    <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\BusinessCore\BusinessCore.csproj" />
+    <ProjectReference Include="..\CoreCore\CoreCore.csproj" />
+    <ProjectReference Include="..\DataAccessCore\DataAccessCore.csproj" />
+    <ProjectReference Include="..\EntitiesCore\EntitiesCore.csproj" />
   </ItemGroup>
 
 
